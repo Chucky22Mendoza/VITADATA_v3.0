@@ -8,7 +8,6 @@ package Vistas;
 import Conexiones.conexion;
 import Procedimientos.IdDoctor;
 import Procedimientos.NomDoctor;
-import Procedimientos.Paciente;
 import java.awt.print.PrinterException;
 import java.text.MessageFormat;
 import java.util.logging.Level;
