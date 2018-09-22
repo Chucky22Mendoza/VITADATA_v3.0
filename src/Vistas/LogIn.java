@@ -10,8 +10,6 @@ import Procedimientos.Login;
 import java.awt.HeadlessException;
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.awt.SystemTray;
-import java.awt.TrayIcon;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -33,6 +31,7 @@ public class LogIn extends javax.swing.JFrame {
     public LogIn() {
        initComponents();
         this.setLocationRelativeTo(null);        //COLOCAR LA APP EN EL CENTRO
+        this.setResizable(false);
         imgIcon = new ImageIcon(getClass().getResource("../Img/corazon.png")); //IMAGEN QUE SERÁ USADA COMO ICONO
         try {
             setIconImage(imgIcon.getImage());         //MANDAR IMAGEN AL FRAME
@@ -529,13 +528,14 @@ public class LogIn extends javax.swing.JFrame {
          try {
              conect.conexion();
              doc = conect.Usuario(dts);
-             System.out.println("idDoc: "+ doc);
+             
              if(doc > 0){
                  txtUser.setText("");
                  txtPassword.setText("");
                  Doctor d = new Doctor();
                  this.dispose();
                  d.setVisible(true);
+                 d.ejecutar = true;
              }else{
                  JOptionPane.showMessageDialog(null, "Inicio de sesión incorrecta", "Datos incorrectos", JOptionPane.ERROR_MESSAGE);
              }

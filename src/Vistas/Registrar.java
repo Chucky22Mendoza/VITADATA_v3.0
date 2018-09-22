@@ -37,6 +37,7 @@ public class Registrar extends javax.swing.JFrame {
             
     public Registrar() {
         initComponents();
+        this.setResizable(false);
         this.setLocationRelativeTo(null);        //COLOCAR LA APP EN EL CENTRO
         imgIcon = new ImageIcon(getClass().getResource("../Img/corazon.png")); //IMAGEN QUE SERÁ USADA COMO ICONO
         try {
