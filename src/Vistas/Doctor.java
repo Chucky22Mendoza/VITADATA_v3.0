@@ -74,7 +74,7 @@ public static boolean ejecutar;
                     System.out.println(e);
                 }
                 try {
-                    Thread.sleep(3000);                                     
+                    Thread.sleep(100000);                                     
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -767,11 +767,14 @@ public static boolean ejecutar;
 
     public static String pac;
     private void jPanel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel8MouseClicked
+        IdDoctor dts = new IdDoctor();
         conexion cn = new conexion();
+        
+        dts.setId(sesion);
         
         DefaultComboBoxModel cbPac = new DefaultComboBoxModel();
         
-        cbPac = cn.getNames();
+        cbPac = cn.getNames(dts);
         String [] names = new String[cbPac.getSize()];
         
         for (int i = 0; i < cbPac.getSize(); i++) {
@@ -808,11 +811,14 @@ public static boolean ejecutar;
         if(resp != null){
             if(resp.equals("Individual")){
                 //Combo box de base de datos
+                IdDoctor dts = new IdDoctor();
                 conexion cn = new conexion();
-        
+
+                dts.setId(sesion);
+
                 DefaultComboBoxModel cbPac = new DefaultComboBoxModel();
 
-                cbPac = cn.getNames();
+                cbPac = cn.getNames(dts);
                 String [] names = new String[cbPac.getSize()];
 
                 for (int i = 0; i < cbPac.getSize(); i++) {
@@ -857,11 +863,14 @@ public static boolean ejecutar;
     }//GEN-LAST:event_jPanel9MouseClicked
 
     private void jPanel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseClicked
+        IdDoctor dts = new IdDoctor();
         conexion cn = new conexion();
+        
+        dts.setId(sesion);
         
         DefaultComboBoxModel cbPac = new DefaultComboBoxModel();
         
-        cbPac = cn.getNames();
+        cbPac = cn.getNames(dts);
         String [] names = new String[cbPac.getSize()];
         
         for (int i = 0; i < cbPac.getSize(); i++) {
@@ -892,12 +901,16 @@ public static boolean ejecutar;
     }//GEN-LAST:event_jPanel5MouseClicked
 
     private void jPanel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseClicked
+        
+        Cita c = new Cita();
+        IdDoctor dts = new IdDoctor();
         conexion cn = new conexion();
-        Cita dts = new Cita();
+        
+        dts.setId(sesion);
         
         DefaultComboBoxModel cbPac = new DefaultComboBoxModel();
         
-        cbPac = cn.getNames();
+        cbPac = cn.getNames(dts);
         String [] names = new String[cbPac.getSize()];
         
         for (int i = 0; i < cbPac.getSize(); i++) {
@@ -908,10 +921,10 @@ public static boolean ejecutar;
         String resp = (String) JOptionPane.showInputDialog(null, "Seleccione un paciente", "Pacientes",JOptionPane.OK_OPTION,icono, names, names[0]);
         
         if(resp != null){
-            dts.setNombre(resp);
-            dts.setId(sesion);
+            c.setNombre(resp);
+            c.setId(sesion);
             
-            int r = cn.cita(dts);
+            int r = cn.cita(c);
             if(r ==1){
                 JOptionPane.showMessageDialog(null, "Registro realizado correctamente","Completado",1);
             }else{

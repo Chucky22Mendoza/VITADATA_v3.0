@@ -104,13 +104,14 @@ public class conexion {
     }
     
     //SP Pacientes 3
-    public DefaultComboBoxModel getNames(){
+    public DefaultComboBoxModel getNames(IdDoctor dts){
         DefaultComboBoxModel mod = new DefaultComboBoxModel();
-        String query = "Select * from Paciente";
+        String query = "Select * from Paciente where _idDoctor = ?";
         ResultSet rs;
         try{
             cn = this.conexion();
             CallableStatement stmt = cn.prepareCall(query);
+            stmt.setInt(1, dts.getId());
             rs = stmt.executeQuery();
             
             while(rs.next()){
