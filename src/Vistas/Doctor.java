@@ -47,7 +47,7 @@ public static boolean ejecutar;
         this.setTitle("VITA DATA"); //TÍTULO DE LA APP
         initDoc();
         instanciarTray();
-        ejecutar= true;
+        ejecutar= false;
     }
     
     private void initDoc(){
@@ -74,7 +74,7 @@ public static boolean ejecutar;
                     System.out.println(e);
                 }
                 try {
-                    Thread.sleep(100000);                                     
+                    Thread.sleep(300000);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Doctor.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -763,6 +763,7 @@ public static boolean ejecutar;
         np.setVisible(true);
         np.setResizable(false);
         np.setIconImage(imgIcon.getImage());
+        
     }//GEN-LAST:event_jPanel6MouseClicked
 
     public static String pac;

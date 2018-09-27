@@ -407,7 +407,7 @@ public class NuevoPaciente extends javax.swing.JFrame {
        String fam = txtAreaF.getText();
        String medQui = txtAreaMQ.getText();
        String pad = txtPad.getText();
-       
+       System.out.println("Nombre: " + name + "\nEdad: "+ edad + "\nPersonales Patológicos: " + persPat);
        if(name.length() > 5 && edad.length() > 0 && fec.length() == 8 && peso.length() > 0 && est.length() > 0 && recNom.length() > 5 && tel.length() == 10){
            try { 
                int numEdad = Integer.parseInt(edad);
@@ -430,7 +430,19 @@ public class NuevoPaciente extends javax.swing.JFrame {
                dts.setPad(pad);
        
                con.NuevoPaciente(dts);
-               this.setVisible(false);
+               
+               txtName.setText("");
+               txtEdad.setText("");
+               txtFec.setText("");
+               txtPeso.setText("");
+               txtEst.setText("");
+               txtRecNom.setText("");
+               txtTel.setText("");
+               txtAreaPP.setText("");
+               txtAreaNP.setText("");
+               txtAreaF.setText("");
+               txtAreaMQ.setText("");
+               txtPad.setText("");
 
            } catch (Exception e) {
                JOptionPane.showMessageDialog(null, "Ha ocurrido un error", "Error", JOptionPane.ERROR_MESSAGE);
@@ -439,6 +451,7 @@ public class NuevoPaciente extends javax.swing.JFrame {
        } else {
            JOptionPane.showMessageDialog(null, "Favor de ingresar todos los campos correctamente", "Error de registro", JOptionPane.ERROR_MESSAGE);
        }
+       
         
     }//GEN-LAST:event_btnAceptarActionPerformed
 

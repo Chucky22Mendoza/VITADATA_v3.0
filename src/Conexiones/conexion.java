@@ -12,14 +12,15 @@ import Procedimientos.nuevoPaciente;
 import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class conexion {
     private static Connection cn = null;
     private static Statement st;
     private String user = "root";
-    private String pass = "milito22";
-    private String host = "localhost";
+    private String pass = "admin1234";
+    private String host = "vitadata.c8febllwvki7.us-east-2.rds.amazonaws.com";
     private String nombreDB = "vitadata";
     
     public Connection conexion(){
@@ -105,7 +106,7 @@ public class conexion {
     //SP Pacientes 3
     public DefaultComboBoxModel getNames(IdDoctor dts){
         DefaultComboBoxModel mod = new DefaultComboBoxModel();
-        String query = "Select * from Paciente where _idDoctor = ?";
+        String query = "Select * from paciente where _idDoctor = ?";
         ResultSet rs;
         try{
             cn = this.conexion();
@@ -147,6 +148,8 @@ public class conexion {
             stmt.setString(13, dts.getPad());
             
             rs = stmt.executeQuery();     
+            
+            JOptionPane.showMessageDialog(null, "Registro de paciente completado correctamente", "Completado", JOptionPane.INFORMATION_MESSAGE);
             
         }catch (SQLException ex){
             System.out.println("error mysql:" + ex.getMessage());
@@ -300,7 +303,8 @@ public class conexion {
             stmt.setString(1, dts.getNombre());
             stmt.setInt(2, dts.getId());
             
-            rs = stmt.executeQuery();     
+            rs = stmt.executeQuery();   
+            JOptionPane.showMessageDialog(null, "Registro de cita completado correctamente", "Completado", JOptionPane.INFORMATION_MESSAGE);
             
             return 1;
         } catch (Exception e) {

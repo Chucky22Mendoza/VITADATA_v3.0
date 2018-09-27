@@ -40,6 +40,8 @@ public class LogIn extends javax.swing.JFrame {
         this.setTitle("VITA DATA"); //TÍTULO DE LA APP
 
         txtUser.requestFocus();
+        
+        System.out.println("Nombre: Guillermo Solis Urrutia \nEdad: 16 \nPersonales Patológicos:'Eclerosis Lateral Amiotrófica");
     }
     
        
@@ -535,7 +537,7 @@ public class LogIn extends javax.swing.JFrame {
                  Doctor d = new Doctor();
                  this.dispose();
                  d.setVisible(true);
-                 d.ejecutar = true;
+                 d.ejecutar = false;
              }else{
                  JOptionPane.showMessageDialog(null, "Inicio de sesión incorrecta", "Datos incorrectos", JOptionPane.ERROR_MESSAGE);
              }
